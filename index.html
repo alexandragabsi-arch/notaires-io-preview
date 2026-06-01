@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notaires.io — Trouvez le bon notaire en 3 questions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --bg-soft: #FFFFFF;
+    --card: #FFFFFF;
+    --primary: #1C4587;
+    --primary-hover: #163769;
+    --accent: #4980E6;
+    --accent-soft: #EEF4FF;
+    --gradient-cta: radial-gradient(circle at 20% 35%, #509BF8, #447CE6, #767AF9);
+    --text: #1C4587;
+    --text-strong: #0F2A52;
+    --muted: #64748B;
+    --border: #E5E7EB;
+    --border-soft: #EEF2F7;
+    --success: #10B981;
+    --hover-bg: #F0F4FF;
+    --tint-blue: #EEF4FF;
+    --tint-purple: #FDF4FF;
+    --tint-green: #ECFDF5;
+    --tint-warm: #FFF7ED;
+    --tint-rose: #FFF1F2;
+    --tint-mint: #F0FDFA;
+    --shadow-card: 0 4px 24px rgba(28,69,135,0.08);
+    --shadow-strong: 0 12px 40px rgba(28,69,135,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text-strong);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+  /* ============= HEADER ============= */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+  .logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 14px;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--primary); }
+
+  .header-cta {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn-ghost {
+    color: var(--primary);
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 14px;
+  }
+  .btn-ghost:hover { color: var(--accent); }
+
+  .btn-primary {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: filter .15s, transform .15s, box-shadow .2s;
+    box-shadow: 0 4px 14px rgba(73,128,230,0.25);
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { filter: brightness(1.05); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(73,128,230,0.35); }
+  .btn-primary.lg { padding: 16px 28px; font-size: 16px; border-radius: 12px; }
+  .btn-primary:disabled { background: #CBD5E1; cursor: not-allowed; box-shadow: none; transform: none; filter: none; }
+
+  .btn-secondary {
+    background: white;
+    color: var(--primary);
+    border: 1.5px solid var(--border);
+    padding: 11px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .btn-secondary:hover { border-color: var(--primary); background: var(--accent-soft); }
+
+  /* ============= HERO ============= */
+  .hero {
+    padding: 80px 0 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(73,128,230,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at top, rgba(0,0,0,0.3), transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at top, rgba(0,0,0,0.3), transparent 70%);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 64px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .pill::before {
+    content: '✦';
+    color: var(--accent);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -1.5px;
+    color: var(--text-strong);
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--accent); font-style: italic; }
+
+  .hero-sub {
+    font-size: 19px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    max-width: 540px;
+    line-height: 1.55;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+
+  .hero-benefits {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .hero-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--text-strong);
+    font-weight: 500;
+  }
+  .hero-benefits .check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .trust-row {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 36px;
+  }
+  .trust-item { font-size: 13px; color: var(--muted); }
+  .trust-item strong { display: block; color: var(--text-strong); font-size: 20px; font-weight: 800; font-family: 'Playfair Display', serif; }
+
+  /* ============= WIZARD CARD (in hero) ============= */
+  .wizard-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: var(--shadow-strong);
+    padding: 36px 36px 32px;
+    position: relative;
+    border: 1px solid var(--border-soft);
+  }
+
+  .progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .progress .dot {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    transition: background .3s;
+  }
+  .progress .dot.active { background: var(--accent); }
+  .progress .dot.done { background: var(--success); }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 14px;
+    padding: 0;
+    font-family: inherit;
+    font-weight: 500;
+  }
+  .back:hover { color: var(--primary); }
+
+  .wizard-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: var(--text-strong);
+    margin-bottom: 6px;
+  }
+  .wizard-card h2 .accent { color: var(--accent); font-style: italic; }
+  .wizard-card .wizard-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .option {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    transition: all .15s;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .option:hover {
+    border-color: var(--primary);
+    background: var(--hover-bg);
+    transform: translateY(-1px);
+  }
+  .option-icon {
+    font-size: 18px;
+    line-height: 1;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: var(--tint-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .options .option:nth-child(1) .option-icon { background: var(--tint-blue); }
+  .options .option:nth-child(2) .option-icon { background: var(--tint-purple); }
+  .options .option:nth-child(3) .option-icon { background: var(--tint-green); }
+  .options .option:nth-child(4) .option-icon { background: var(--tint-warm); }
+  .options .option:nth-child(5) .option-icon { background: var(--tint-rose); }
+
+  .option-body { flex: 1; }
+  .option-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+  .option-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .option-arrow {
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform .15s;
+  }
+  .option:hover .option-arrow { color: var(--primary); transform: translateX(2px); }
+
+  /* Enrichment compact questions */
+  .enrich-q { display:flex; flex-direction:column; gap:6px; }
+  .enrich-q-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+  .enrich-choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .enrich-choice {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 9px;
+    padding: 7px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-strong);
+    transition: all .15s;
+  }
+  .enrich-choice:hover { border-color: var(--primary); background: var(--hover-bg); }
+  .enrich-choice.selected {
+    border-color: var(--primary);
+    background: var(--accent-soft);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .enrich-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--tint-green);
+    color: #0F766E;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 8px;
+  }
+
+  .postal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .postal-input {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 18px;
+    font-family: inherit;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    outline: none;
+    transition: border-color .15s;
+    letter-spacing: 2px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+  .postal-input:focus { border-color: var(--primary); }
+
+  .btn-cta {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: filter .15s, transform .15s;
+    width: 100%;
+    box-shadow: 0 4px 14px rgba(73,128,230,0.25);
+  }
+  .btn-cta:hover { filter: brightness(1.05); transform: translateY(-1px); }
+  .btn-cta:disabled { background: #CBD5E1; cursor: not-allowed; box-shadow: none; transform: none; filter: none; }
+
+  /* ============= RESULT VIEW (when wizard finished) ============= */
+  .result-banner {
+    background: linear-gradient(135deg, #1C4587 0%, #4980E6 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 30px rgba(28,69,135,0.2);
+  }
+  .result-banner .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.85;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .result-banner .specialty {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .result-banner .meta {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  .estim-row {
+    display: flex;
+    gap: 8px;
+    background: var(--tint-mint);
+    border: 1px solid #99F6E4;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    align-items: center;
+    font-size: 13px;
+  }
+  .estim-row .estim-label { color: #0F766E; font-weight: 600; }
+  .estim-row .estim-value { color: #0F766E; font-weight: 700; }
+
+  .notary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .notary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    transition: border-color .15s;
+  }
+  .notary:hover { border-color: var(--primary); }
+  .avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--gradient-cta);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .avatar.green { background: linear-gradient(135deg, #10B981, #059669); }
+  .avatar.purple { background: linear-gradient(135deg, #A855F7, #7E22CE); }
+  .notary-info { flex: 1; min-width: 0; }
+  .notary-name { font-weight: 600; font-size: 14px; color: var(--text-strong); }
+  .notary-meta {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    margin-top: 2px;
+  }
+  .rating { color: var(--accent); font-weight: 700; }
+  .availability { font-size: 12px; color: var(--success); font-weight: 500; margin-top: 4px; }
+  .book-btn {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    flex-shrink: 0;
+    transition: filter .15s, transform .15s;
+  }
+  .book-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+  /* ============= SECTIONS GENERIC ============= */
+  section.block { padding: 80px 0; }
+  section.bg-soft { background: var(--bg-soft); }
+
+  .section-head { text-align: center; margin-bottom: 56px; }
+  .section-head .eyebrow {
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-strong);
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .section-head h2 .accent { color: var(--accent); font-style: italic; }
+  .section-head p {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* ============= HOW IT WORKS ============= */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .step-card {
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 32px;
+    position: relative;
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    background: var(--gradient-cta);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 16px rgba(73,128,230,0.25);
+  }
+  .step-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-strong);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+  }
+  .step-card p { color: var(--muted); font-size: 14px; }
+
+  /* ============= FEATURES GRID ============= */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature {
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all .2s;
+  }
+  .feature:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card);
+  }
+  .feature-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+  .feature-icon.blue { background: var(--tint-blue); }
+  .feature-icon.green { background: var(--tint-green); }
+  .feature-icon.purple { background: var(--tint-purple); }
+  .feature-icon.warm { background: var(--tint-warm); }
+  .feature-icon.rose { background: var(--tint-rose); }
+  .feature-icon.mint { background: var(--tint-mint); }
+  .feature h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-strong);
+    margin-bottom: 8px;
+  }
+  .feature p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+
+  /* ============= PREDOSSIER SHOWCASE ============= */
+  .predossier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .predossier-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-strong);
+    letter-spacing: -0.8px;
+    margin-bottom: 20px;
+  }
+  .predossier-text h3 .accent { color: var(--accent); font-style: italic; }
+  .predossier-text p {
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .predossier-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 28px;
+  }
+  .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat .lbl {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  .mock-doc {
+    background: white;
+    border-radius: 16px;
+    box-shadow: var(--shadow-strong);
+    padding: 28px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+  }
+  .mock-doc::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: var(--gradient-cta);
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0.15;
+    filter: blur(20px);
+  }
+  .mock-doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-soft);
+    margin-bottom: 16px;
+  }
+  .mock-doc-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+  }
+  .mock-doc-tag {
+    background: var(--tint-green);
+    color: #0F766E;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .mock-doc h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-strong);
+    margin-bottom: 6px;
+  }
+  .mock-doc .mock-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .mock-field {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-soft);
+    font-size: 13px;
+  }
+  .mock-field:last-of-type { border-bottom: none; }
+  .mock-field .k { color: var(--muted); }
+  .mock-field .v { color: var(--text-strong); font-weight: 600; text-align: right; }
+  .mock-doc-foot {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-soft);
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mock-doc-foot::before { content: '🤖'; }
+
+  /* ============= COMPARISON ============= */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .compare-col {
+    background: white;
+    border-radius: 18px;
+    padding: 32px;
+    border: 1px solid var(--border-soft);
+  }
+  .compare-col.us {
+    border: 2px solid var(--accent);
+    background: linear-gradient(180deg, white 0%, var(--accent-soft) 100%);
+    box-shadow: var(--shadow-card);
+    position: relative;
+  }
+  .compare-col.us::after {
+    content: '★ Notaires.io';
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    background: var(--gradient-cta);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(73,128,230,0.3);
+  }
+  .compare-col h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--text-strong);
+    margin-bottom: 18px;
+    font-weight: 700;
+  }
+  .compare-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .compare-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-strong);
+    align-items: flex-start;
+  }
+  .compare-list .yes::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .compare-list .no::before {
+    content: '✕';
+    color: #CBD5E1;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .compare-list .no { color: var(--muted); }
+
+  /* ============= TESTIMONIALS ============= */
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .testimonial {
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 18px;
+    padding: 28px;
+  }
+  .stars {
+    color: #FCD34D;
+    margin-bottom: 14px;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .testimonial p {
+    color: var(--text-strong);
+    font-size: 15px;
+    margin-bottom: 18px;
+    line-height: 1.55;
+    font-style: italic;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .testimonial-author { display: flex; gap: 12px; align-items: center; }
+  .testimonial-author .author-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-cta);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .testimonial-author .author-name {
+    font-weight: 600;
+    color: var(--text-strong);
+    font-size: 14px;
+  }
+  .testimonial-author .author-meta {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ============= PRICING ============= */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .price-card {
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 36px;
+    transition: all .2s;
+  }
+  .price-card.highlight {
+    border: 2px solid var(--accent);
+    background: linear-gradient(180deg, white 0%, var(--accent-soft) 100%);
+    box-shadow: var(--shadow-strong);
+    transform: translateY(-4px);
+  }
+  .price-tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 5px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+  .price-card.highlight .price-tag { background: var(--gradient-cta); color: white; }
+  .price-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--text-strong);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .price-card .price-sub { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+  .price-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 6px;
+  }
+  .price-amount .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--text-strong);
+    letter-spacing: -1.5px;
+  }
+  .price-amount .per { color: var(--muted); font-size: 14px; }
+  .price-card .price-foot { color: var(--muted); font-size: 13px; margin-bottom: 22px; }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .price-features li {
+    font-size: 14px;
+    color: var(--text-strong);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .price-features li::before {
+    content: '✓';
+    color: var(--success);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  /* ============= FAQ ============= */
+  .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 26px;
+    text-align: left;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-strong);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-q::after {
+    content: '+';
+    color: var(--accent);
+    font-size: 22px;
+    font-weight: 400;
+    transition: transform .2s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    padding: 0 26px;
+    max-height: 0;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+    transition: max-height .25s, padding .25s;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  .faq-item.open .faq-a { padding: 0 26px 22px; max-height: 300px; }
+
+  /* ============= FOOTER ============= */
+  footer {
+    background: var(--text-strong);
+    color: rgba(255,255,255,0.7);
+    padding: 56px 0 30px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  footer h4 {
+    color: white;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  footer ul a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; transition: color .15s; }
+  footer ul a:hover { color: white; }
+  .footer-brand .logo { color: white; font-size: 26px; margin-bottom: 14px; display: inline-block; }
+  .footer-brand .logo span { color: #B0C4F1; }
+  .footer-brand p { font-size: 14px; max-width: 320px; text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* ============= MODAL ============= */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,42,82,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    backdrop-filter: blur(6px);
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: white;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 100%;
+    padding: 32px;
+    box-shadow: var(--shadow-strong);
+  }
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-strong);
+    letter-spacing: -0.4px;
+  }
+  .modal .modal-sub {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  .modal-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+  .modal-tab {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1.5px solid var(--border);
+    background: white;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all .15s;
+  }
+  .modal-tab.active {
+    border-color: var(--primary);
+    background: var(--accent-soft);
+    color: var(--primary);
+  }
+  .slots {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  .slot {
+    padding: 11px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all .15s;
+    color: var(--text-strong);
+  }
+  .slot:hover { border-color: var(--primary); background: var(--hover-bg); }
+  .slot.selected {
+    border-color: var(--primary);
+    background: var(--gradient-cta);
+    color: white;
+    box-shadow: 0 4px 12px rgba(73,128,230,0.3);
+  }
+  .modal-actions { display: flex; gap: 10px; }
+  .modal-actions button { flex: 1; }
+
+  /* ============= CONFIRMATION ============= */
+  .confirm-box {
+    text-align: center;
+    padding: 20px 8px;
+  }
+  .confirm-check {
+    width: 76px; height: 76px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+    margin-bottom: 18px;
+    box-shadow: 0 8px 24px rgba(16,185,129,0.3);
+  }
+  .confirm-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--text-strong);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .confirm-box p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+
+  /* ============= RESPONSIVE ============= */
+  @media (max-width: 968px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero h1 { font-size: 44px; }
+    .nav-links { display: none; }
+    .steps, .features-grid, .test-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .predossier-grid, .compare-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .section-head h2 { font-size: 34px; }
+  }
+  @media (max-width: 640px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .hero { padding: 50px 0; }
+    .hero h1 { font-size: 36px; }
+    .wizard-card { padding: 26px 22px; }
+    section.block { padding: 56px 0; }
+    .section-head h2 { font-size: 28px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    .slots { grid-template-columns: 1fr 1fr; }
+  }
+
+  [hidden] { display: none !important; }
+
+  /* ============= TOUR OVERLAY ============= */
+  .tour-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,42,82,0.92);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+    padding: 24px;
+  }
+  .tour-overlay.open { display: flex; }
+  .tour-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .tour-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .tour-step-counter {
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+  .tour-close {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background .15s;
+  }
+  .tour-close:hover { background: rgba(255,255,255,0.2); }
+
+  .tour-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    min-height: 0;
+  }
+  .tour-mock {
+    flex: 1.4;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    overflow: hidden;
+    max-width: 760px;
+    max-height: 100%;
+    height: 540px;
+  }
+  .tour-narration {
+    flex: 1;
+    color: white;
+    max-width: 380px;
+  }
+  .tour-eyebrow {
+    color: #B0C4F1;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .tour-narration h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.8px;
+  }
+  .tour-narration h2 em {
+    color: #B0C4F1;
+    font-style: italic;
+  }
+  .tour-narration p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .tour-bullets {
+    list-style: none;
+    margin-top: 18px;
+  }
+  .tour-bullets li {
+    color: rgba(255,255,255,0.95);
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-left: 22px;
+    position: relative;
+  }
+  .tour-bullets li::before {
+    content: '✓';
+    color: #6EE7B7;
+    font-weight: 800;
+    position: absolute;
+    left: 0;
+  }
+
+  .tour-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+  }
+  .tour-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .tour-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .tour-dot.active { background: #B0C4F1; width: 24px; border-radius: 4px; }
+  .tour-btn {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: filter .15s, transform .15s;
+    box-shadow: 0 4px 14px rgba(73,128,230,0.3);
+  }
+  .tour-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .tour-btn-ghost {
+    background: none;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .tour-btn-ghost:hover { background: rgba(255,255,255,0.1); }
+
+  /* ===== TOUR MOCKUP STYLES (compact dashboard) ===== */
+  .mock-dash { display: grid; grid-template-columns: 200px 1fr; height: 100%; }
+  .mock-side {
+    background: #FFFFFF;
+    padding: 20px 14px;
+    border-right: 1px solid var(--border-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mock-side .mock-logo {
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 18px;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  .mock-side .mock-logo span { color: var(--accent); }
+  .mock-nav-item {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
+  .mock-nav-item.active {
+    background: var(--accent-soft);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .mock-main { padding: 24px; overflow: auto; }
+  .mock-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+  }
+  .mock-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+  .mock-h1 em { color: var(--accent); font-style: italic; }
+  .mock-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .mock-user .av {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 11px;
+  }
+  .mock-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 22px; }
+  .mock-kpi {
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .mock-kpi .mock-kpi-lbl { font-size: 11px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  .mock-kpi .mock-kpi-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-strong);
+  }
+  .mock-kpi .mock-kpi-delta { font-size: 11px; color: var(--success); font-weight: 600; }
+  .mock-section-h {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .mock-rdv-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .mock-rdv-time {
+    background: var(--accent-soft);
+    color: var(--primary);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .mock-rdv-row .mock-rdv-name { font-weight: 600; font-size: 13px; color: var(--text-strong); }
+  .mock-rdv-row .mock-rdv-meta { font-size: 11px; color: var(--muted); }
+  .mock-rdv-tag {
+    background: var(--tint-purple);
+    color: #7E22CE;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .mock-rdv-tag.visio { background: var(--tint-mint); color: #0F766E; }
+  .mock-rdv-btn {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .mock-toast {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: white;
+    border: 1px solid var(--border-soft);
+    border-left: 4px solid var(--success);
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 280px;
+    font-size: 12px;
+  }
+  .mock-toast strong { color: var(--text-strong); display: block; margin-bottom: 2px; font-size: 13px; }
+
+  @media (max-width: 968px) {
+    .tour-stage { flex-direction: column; gap: 16px; }
+    .tour-mock { width: 100%; max-height: 50vh; }
+    .tour-narration h2 { font-size: 26px; }
+    .mock-dash { grid-template-columns: 1fr; }
+    .mock-side { display: none; }
+    .mock-kpis { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="container">
+    <div class="nav-row">
+      <a href="#" class="logo">Notaires<span>.io</span></a>
+      <nav class="nav-links">
+        <a href="#how">Comment ça marche</a>
+        <a href="#features">Fonctionnalités</a>
+        <a href="#pricing">Tarifs notaires</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-cta">
+        <button class="btn-ghost">Connexion</button>
+        <a href="#hero" class="btn-primary">Prendre RDV</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="pill">3 questions · 2 minutes · 100 % gratuit</div>
+        <h1>Trouvez le bon notaire <span class="accent">en 3 questions</span>.</h1>
+        <p class="hero-sub">
+          Sans appel, sans se tromper de spécialité, sans perdre 1h en RDV.
+          Notaires.io vous oriente vers le notaire spécialisé dans votre situation précise.
+        </p>
+        <ul class="hero-benefits">
+          <li><span class="check">✓</span>Spécialité garantie (succession, immobilier, famille, société)</li>
+          <li><span class="check">✓</span>Estimation des honoraires avant le RDV</li>
+          <li><span class="check">✓</span>Pré-dossier envoyé au notaire — gagnez 30 min de RDV</li>
+        </ul>
+        <div class="trust-row">
+          <div class="trust-item"><strong>4,9★</strong>sur 2 814 avis</div>
+          <div class="trust-item"><strong>17 000</strong>notaires référencés</div>
+          <div class="trust-item"><strong>72 h</strong>délai RDV moyen</div>
+        </div>
+      </div>
+
+      <!-- WIZARD INLINE -->
+      <div class="wizard-card">
+        <div class="progress">
+          <div class="dot" id="dot-1"></div>
+          <div class="dot" id="dot-2"></div>
+          <div class="dot" id="dot-3"></div>
+        </div>
+
+        <!-- SCREEN 1 -->
+        <section class="screen" data-screen="1">
+          <h2>De quoi avez-vous <span class="accent">besoin</span> ?</h2>
+          <p class="wizard-sub">On vous trouve le bon notaire en 3 clics.</p>
+          <div class="options">
+            <button class="option" onclick="answer('q1','immo')">
+              <div class="option-icon">🏠</div>
+              <div class="option-body">
+                <div class="option-label">Un bien immobilier</div>
+                <div class="option-desc">Vente, achat, donation d'un bien</div>
+              </div>
+              <span class="option-arrow">→</span>
+            </button>
+            <button class="option" onclick="answer('q1','famille')">
+              <div class="option-icon">👨‍👩‍👧</div>
+              <div class="option-body">
+                <div class="option-label">Ma famille</div>
+                <div class="option-desc">Succession, mariage, divorce, donation</div>
+              </div>
+              <span class="option-arrow">→</span>
+            </button>
+            <button class="option" onclick="answer('q1','societe')">
+              <div class="option-icon">💼</div>
+              <div class="option-body">
+                <div class="option-label">Mon entreprise</div>
+                <div class="option-desc">Création, cession, statuts</div>
+              </div>
+              <span class="option-arrow">→</span>
+            </button>
+            <button class="option" onclick="answer('q1','document')">
+              <div class="option-icon">📜</div>
+              <div class="option-body">
+                <div class="option-label">Un document</div>
+                <div class="option-desc">Authentifier, certifier</div>
+              </div>
+              <span class="option-arrow">→</span>
+            </button>
+            <button class="option" onclick="answer('q1','idk')">
+              <div class="option-icon">❓</div>
+              <div class="option-body">
+                <div class="option-label">Je ne sais pas exactement</div>
+                <div class="option-desc">On vous guide</div>
+              </div>
+              <span class="option-arrow">→</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- SCREEN 2 -->
+        <section class="screen" data-screen="2" hidden>
+          <button class="back" onclick="goto(1)">← Retour</button>
+          <h2 id="q2-title">…</h2>
+          <p class="wizard-sub" id="q2-subtitle">…</p>
+          <div class="options" id="q2-options"></div>
+        </section>
+
+        <!-- SCREEN 3 -->
+        <section class="screen" data-screen="3" hidden>
+          <button class="back" onclick="goto(2)">← Retour</button>
+          <h2>Où cherchez-vous <span class="accent">votre notaire</span> ?</h2>
+          <p class="wizard-sub">On vous présente les notaires les plus proches.</p>
+          <form class="postal-form" onsubmit="submitPostal(event)">
+            <input class="postal-input" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="75008" id="postal-input" required>
+            <button class="btn-cta" type="submit">Continuer →</button>
+          </form>
+        </section>
+
+        <!-- SCREEN 3.5 - ENRICHISSEMENT DOSSIER -->
+        <section class="screen" data-screen="enrich" hidden>
+          <button class="back" onclick="goto(3)">← Retour</button>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+            <span style="background:var(--tint-purple);color:#7E22CE;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:0.5px;">📋 PRÉPARER MON DOSSIER</span>
+            <span style="font-size:11px;color:var(--muted);">Optionnel · 30 sec</span>
+          </div>
+          <h2 id="enrich-title">Quelques détails pour <span class="accent">gagner du temps</span></h2>
+          <p class="wizard-sub" id="enrich-sub">Plus c'est précis, plus votre RDV sera efficace. Vous pouvez passer.</p>
+          <div id="enrich-questions" style="display:flex;flex-direction:column;gap:14px;"></div>
+          <div style="display:flex;gap:10px;margin-top:18px;">
+            <button class="btn-secondary" onclick="skipEnrich()" style="flex:1;">Passer cette étape</button>
+            <button class="btn-cta" id="enrich-submit" onclick="submitEnrich()" style="flex:1;" disabled>Voir les notaires →</button>
+          </div>
+        </section>
+
+        <!-- SCREEN 4 - RESULT -->
+        <section class="screen" data-screen="4" hidden>
+          <button class="back" onclick="goto(3)">← Modifier ma recherche</button>
+          <div class="result-banner">
+            <div class="label">Spécialité recommandée</div>
+            <div class="specialty" id="specialty-name">…</div>
+            <div class="meta" id="result-meta">…</div>
+          </div>
+          <div class="estim-row">
+            <span class="estim-label">💰 Honoraires estimés :</span>
+            <span class="estim-value" id="estim-value">…</span>
+          </div>
+          <div class="notary-list" id="notary-list"></div>
+        </section>
+
+        <!-- SCREEN 5 - CONFIRM -->
+        <section class="screen" data-screen="5" hidden>
+          <div class="confirm-box">
+            <div class="confirm-check">✓</div>
+            <h2>Rendez-vous confirmé</h2>
+            <p id="confirm-details">…</p>
+            <p style="font-size:13px;">
+              📧 Email de confirmation envoyé<br>
+              📋 Pré-dossier transmis au notaire<br>
+              💰 Devis estimé inclus
+            </p>
+            <div style="display:flex;gap:10px;margin-top:14px;justify-content:center;flex-wrap:wrap;">
+              <button class="btn-secondary" onclick="openEmailPreview()" style="font-size:13px;padding:9px 16px;">
+                ✉️ Voir l'email reçu
+              </button>
+              <button class="btn-secondary" onclick="resetAll()" style="font-size:13px;padding:9px 16px;">
+                Faire une autre recherche
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="block bg-soft" id="how">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Comment ça marche</div>
+      <h2>Trois étapes, <span class="accent">zéro friction</span>.</h2>
+      <p>Pas d'appel, pas d'attente, pas d'erreur de spécialité.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Répondez à 3 questions</h3>
+        <p>On identifie votre besoin réel et la spécialité notariale adaptée. Notre IA pose les bonnes questions selon votre situation — pas un formulaire générique.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Choisissez votre notaire</h3>
+        <p>On vous présente les notaires spécialisés près de chez vous, avec leurs avis vérifiés, leur prochain créneau, et une estimation des honoraires.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>RDV en présentiel ou visio</h3>
+        <p>Réservez en un clic. Le notaire reçoit votre pré-dossier automatiquement — vous gagnez 30 minutes de RDV et il est prêt avant que vous n'arriviez.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="block" id="features">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Pourquoi Notaires.io</div>
+      <h2>Ce que les autres <span class="accent">n'ont pas</span>.</h2>
+      <p>Doctolib n'est pas conçu pour le notariat. Les autres annuaires ne font que lister.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon blue">🎯</div>
+        <h3>Spécialité garantie</h3>
+        <p>Notre intake intelligent vous oriente vers le notaire vraiment spécialisé dans votre cas — fini les "ce n'est pas mon domaine, voyez mon confrère" après 45 min de RDV.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon purple">🤖</div>
+        <h3>Pré-dossier IA</h3>
+        <p>Vos réponses génèrent un brief structuré envoyé au notaire avant le RDV. Il prépare votre dossier, vous gagnez 30 min sur place.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon green">💰</div>
+        <h3>Estimation honoraires</h3>
+        <p>Tarifs notariés (émoluments) calculés automatiquement selon votre situation — transparence avant le RDV, fini les surprises.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon warm">🎥</div>
+        <h3>Visio native intégrée</h3>
+        <p>Lien visio Notaires.io auto-généré à la réservation, ou connexion au Zoom / Google Meet du notaire (au choix). Aucune app à installer, lien sécurisé qui expire après le RDV.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon rose">🔒</div>
+        <h3>Coffre-fort RGPD</h3>
+        <p>Upload sécurisé de vos documents (titre de propriété, livret de famille…). Chiffrement bout-en-bout, hébergé en France.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon mint">⚡</div>
+        <h3>RDV en 72 h</h3>
+        <p>Délai moyen de prise de RDV : 72 heures contre 3 semaines en moyenne par téléphone. Les notaires inscrits libèrent des créneaux dédiés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PREDOSSIER ================= -->
+<section class="block bg-soft">
+  <div class="container">
+    <div class="predossier-grid">
+      <div class="predossier-text">
+        <div class="eyebrow" style="color:var(--accent);font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;">Killer feature</div>
+        <h3>Un <span class="accent">pré-dossier intelligent</span> que personne d'autre ne propose.</h3>
+        <p>
+          Vos réponses à l'intake génèrent un brief notarial structuré : nature du dossier, parties prenantes,
+          documents à fournir, points juridiques à éclaircir.
+        </p>
+        <p>
+          Le notaire reçoit le brief 24 h avant le RDV. Il arrive préparé. Vous arrivez préparé.
+          Le RDV ne sert plus à découvrir le cas — il sert à le résoudre.
+        </p>
+        <div class="predossier-stats">
+          <div class="stat"><div class="num">-30 min</div><div class="lbl">temps de RDV</div></div>
+          <div class="stat"><div class="num">+85 %</div><div class="lbl">satisfaction client</div></div>
+          <div class="stat"><div class="num">+40 %</div><div class="lbl">conversion notaire</div></div>
+        </div>
+      </div>
+
+      <div class="mock-doc">
+        <div class="mock-doc-header">
+          <div class="mock-doc-title">Pré-dossier · Successions</div>
+          <div class="mock-doc-tag">Reçu</div>
+        </div>
+        <h4>M. Dupont — Succession Paris 8ème</h4>
+        <p class="mock-sub">RDV programmé : demain 14h30 · Me Amélie Martin</p>
+        <div class="mock-field"><span class="k">Type de succession</span><span class="v">Avec testament</span></div>
+        <div class="mock-field"><span class="k">Nombre d'héritiers</span><span class="v">3 (2 enfants + conjoint)</span></div>
+        <div class="mock-field"><span class="k">Biens dans la succession</span><span class="v">1 appartement + comptes</span></div>
+        <div class="mock-field"><span class="k">Donations antérieures</span><span class="v">Oui (2019)</span></div>
+        <div class="mock-field"><span class="k">Conflit entre héritiers</span><span class="v">Aucun</span></div>
+        <div class="mock-field"><span class="k">Estim. honoraires</span><span class="v">2 400 € — 3 200 €</span></div>
+        <div class="mock-doc-foot">Généré par IA Notaires.io · validé par le client</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARISON ================= -->
+<section class="block">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Comparaison</div>
+      <h2>Pourquoi <span class="accent">pas un autre annuaire</span> ?</h2>
+      <p>On a regardé ce qui existe. Voici la vraie différence.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <h3>Les autres annuaires</h3>
+        <ul class="compare-list">
+          <li class="yes">Liste de notaires par ville</li>
+          <li class="yes">Prise de RDV en ligne</li>
+          <li class="no">Aucune qualification du besoin</li>
+          <li class="no">Pas de pré-dossier</li>
+          <li class="no">Estimation honoraires absente</li>
+          <li class="no">Pas de visio (RDV uniquement au cabinet)</li>
+          <li class="no">Tarif notaire : 139 € HT/mois</li>
+        </ul>
+      </div>
+      <div class="compare-col us">
+        <h3>Notaires.io</h3>
+        <ul class="compare-list">
+          <li class="yes">Liste de notaires par ville</li>
+          <li class="yes">Prise de RDV en ligne</li>
+          <li class="yes"><strong>Intake intelligent (spécialité garantie)</strong></li>
+          <li class="yes"><strong>Pré-dossier IA envoyé au notaire</strong></li>
+          <li class="yes"><strong>Estimation honoraires temps réel</strong></li>
+          <li class="yes"><strong>Visio native + coffre-fort RGPD</strong></li>
+          <li class="yes"><strong>Tarif notaire : 79 € HT/mois</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="block bg-soft">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Témoignages</div>
+      <h2>Ce qu'en disent <span class="accent">nos premiers utilisateurs</span>.</h2>
+    </div>
+    <div class="test-grid">
+      <div class="testimonial">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"Je redoutais de devoir gérer la succession de ma mère. En 5 minutes Notaires.io m'a orientée vers la bonne notaire. Le pré-dossier a tout changé : elle savait déjà tout en arrivant."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CD</div>
+          <div><div class="author-name">Claire D.</div><div class="author-meta">Succession · Paris 16e</div></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"On voulait acheter un appartement avec ma compagne. Notaires.io nous a trouvé un notaire en 1 jour avec une visio le soir même. Estimation des frais en avance — aucune surprise."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar green">JM</div>
+          <div><div class="author-name">Julien M.</div><div class="author-meta">Acquisition · Lyon</div></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★ ★ ★ ★ ★</div>
+        <p>"En tant que notaire, le pré-dossier m'évite 20 à 40 min par RDV de qualification. Mes clients arrivent préparés, les RDV sont productifs. Mon NPS a explosé."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar purple">SP</div>
+          <div><div class="author-name">Me Sophie P.</div><div class="author-meta">Notaire · Paris 9e</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING (NOTAIRES) ================= -->
+<section class="block" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Pour les notaires</div>
+      <h2>Une plateforme <span class="accent">au juste prix</span>.</h2>
+      <p>Pas d'engagement, pas de frais cachés. Vous restez maître de votre agenda et de vos honoraires.</p>
+      <button class="btn-secondary" onclick="openTour()" style="margin-top:18px;padding:12px 22px;font-size:14px;display:inline-flex;align-items:center;gap:8px;">
+        <span style="font-size:18px;">🎬</span> Visite guidée — 60 secondes pour comprendre votre espace
+      </button>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tag">Découverte</div>
+        <h3>Référencement</h3>
+        <p class="price-sub">Présence dans l'annuaire</p>
+        <div class="price-amount"><span class="num">0 €</span><span class="per">/mois</span></div>
+        <div class="price-foot">Gratuit à vie</div>
+        <ul class="price-features">
+          <li>Fiche notaire publique</li>
+          <li>Avis clients vérifiés</li>
+          <li>Référencement SEO</li>
+          <li>Pas de prise de RDV</li>
+        </ul>
+        <button class="btn-secondary" style="width:100%;">Référencer mon étude</button>
+      </div>
+      <div class="price-card highlight">
+        <div class="price-tag">Le plus choisi</div>
+        <h3>Premium</h3>
+        <p class="price-sub">RDV en ligne + pré-dossier IA</p>
+        <div class="price-amount"><span class="num">79 €</span><span class="per">HT / mois</span></div>
+        <div class="price-foot">Sans engagement · 30 jours gratuits</div>
+        <ul class="price-features">
+          <li><strong>Tout ce qui est dans Découverte</strong></li>
+          <li>Agenda synchronisé (Google / Outlook)</li>
+          <li>Pré-dossier IA pour chaque RDV</li>
+          <li>Visio intégrée + coffre-fort RGPD</li>
+          <li>Cross-sell LegalCorners (SCI, sociétés)</li>
+          <li>+89 € HT/mois par utilisateur supplémentaire</li>
+        </ul>
+        <button class="btn-primary lg" style="width:100%;">Démarrer 30 jours gratuits</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="block bg-soft" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Questions fréquentes</div>
+      <h2>Tout ce que vous voulez savoir.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Notaires.io est-il vraiment gratuit pour les particuliers ?</button>
+        <div class="faq-a">Oui, à 100 %. La recherche, l'intake intelligent, le pré-dossier et la prise de RDV ne vous coûtent rien. Vous ne payez que les honoraires du notaire, directement à lui, aux tarifs réglementés.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment savez-vous quelle est la bonne spécialité pour mon cas ?</button>
+        <div class="faq-a">Notre intake intelligent pose 3 à 5 questions adaptées à votre situation et utilise un arbre de décision validé avec des notaires praticiens. Pour les cas complexes, un notaire généraliste vous redirige si besoin — gratuitement.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Le pré-dossier remplace-t-il le RDV avec le notaire ?</button>
+        <div class="faq-a">Non. Le pré-dossier prépare le RDV : le notaire arrive en sachant déjà l'essentiel, et vous arrivez en ayant rassemblé les bons documents. Le conseil et la signature des actes restent du ressort exclusif du notaire.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Les honoraires affichés sont-ils contractuels ?</button>
+        <div class="faq-a">Ce sont des estimations calculées sur les tarifs réglementés (émoluments) selon votre situation. Le devis définitif vous est remis par le notaire avant la signature, comme l'exige la loi.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Mes données sont-elles sécurisées ?</button>
+        <div class="faq-a">Oui. Hébergement en France (OVH/Scaleway), chiffrement bout-en-bout des documents, conformité RGPD, et secret professionnel maintenu via convention avec chaque notaire référencé.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Je suis notaire, comment m'inscrire ?</button>
+        <div class="faq-a">Cliquez sur "Tarifs notaires" en haut de page. L'inscription se fait en 5 minutes avec vérification de votre CRPCEN. 30 jours d'essai gratuits sans CB demandée.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Notaires<span>.io</span></div>
+        <p>La plateforme de prise de RDV intelligente pour particuliers et notaires. Pensée pour faire gagner du temps aux deux côtés.</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="#how">Comment ça marche</a></li>
+          <li><a href="#features">Fonctionnalités</a></li>
+          <li><a href="#pricing">Tarifs notaires</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Notaires</h4>
+        <ul>
+          <li><a href="#">Référencer mon étude</a></li>
+          <li><a href="#">Démo en visio</a></li>
+          <li><a href="#">Centre d'aide notaires</a></li>
+          <li><a href="#">Témoignages confrères</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">CGU</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">RGPD</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Notaires.io · Une marque du groupe LegalCorners</div>
+      <div>Made with ♥ in Paris</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============= VISITE GUIDÉE NOTAIRE (TOUR) ============= -->
+<div class="tour-overlay" id="tour">
+  <div class="tour-header">
+    <div class="tour-title">🎬 Visite guidée — Espace Notaire</div>
+    <div style="display:flex;gap:14px;align-items:center;">
+      <div class="tour-step-counter" id="tour-counter">1 / 6</div>
+      <button class="tour-close" onclick="closeTour()">✕</button>
+    </div>
+  </div>
+  <div class="tour-stage">
+    <div class="tour-mock" id="tour-mock"></div>
+    <div class="tour-narration" id="tour-text"></div>
+  </div>
+  <div class="tour-footer">
+    <button class="tour-btn tour-btn-ghost" onclick="prevSlide()">← Précédent</button>
+    <div class="tour-dots" id="tour-dots"></div>
+    <button class="tour-btn" id="tour-next" onclick="nextSlide()">Suivant →</button>
+  </div>
+</div>
+
+<!-- MODAL EMAIL PREVIEW -->
+<div class="modal-overlay" id="email-modal">
+  <div class="modal" style="max-width:560px;padding:0;overflow:hidden;">
+    <!-- Email "envelope" header -->
+    <div style="background:#F1F5F9;padding:14px 24px;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <strong style="color:var(--text-strong);">Aperçu de l'email envoyé</strong>
+        <button onclick="closeEmailPreview()" style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:18px;line-height:1;padding:0;">✕</button>
+      </div>
+      <div><strong>De :</strong> Notaires.io &lt;hello@notaires.io&gt;</div>
+      <div><strong>À :</strong> <span id="email-to">alex@example.com</span></div>
+      <div><strong>Objet :</strong> ✅ RDV confirmé avec <span id="email-subj-name">…</span></div>
+    </div>
+
+    <!-- Email body -->
+    <div style="padding:28px 24px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text-strong);line-height:1.6;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-family:'Inter',sans-serif;font-size:22px;font-weight:800;color:var(--primary);">Notaires<span style="color:var(--accent);">.io</span></div>
+      </div>
+
+      <p>Bonjour,</p>
+      <p>Votre rendez-vous est <strong style="color:var(--success);">confirmé</strong>. Voici les détails :</p>
+
+      <div style="background:var(--accent-soft);border-radius:10px;padding:16px;margin:16px 0;">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:4px;">📅 Date et heure</div>
+        <div style="font-weight:600;color:var(--text-strong);font-size:15px;" id="email-date">Demain à 14h30</div>
+        <div style="font-size:13px;color:var(--muted);margin:10px 0 4px;">👤 Notaire</div>
+        <div style="font-weight:600;color:var(--text-strong);" id="email-notary">Me Amélie Martin · Paris 8ème</div>
+        <div style="font-size:13px;color:var(--muted);margin:10px 0 4px;">📍 Mode</div>
+        <div style="font-weight:600;color:var(--text-strong);" id="email-mode">🎥 Visio</div>
+      </div>
+
+      <div id="email-link-block" hidden>
+        <div style="background:white;border:2px dashed var(--accent);border-radius:10px;padding:16px;margin:16px 0;text-align:center;">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">VOTRE LIEN VISIO SÉCURISÉ</div>
+          <div style="font-family:'SF Mono',Menlo,monospace;font-size:13px;color:var(--accent);word-break:break-all;margin-bottom:10px;" id="email-link">meet.notaires.io/rdv/uebfbo8d</div>
+          <div style="background:var(--gradient-cta);color:white;display:inline-block;padding:10px 24px;border-radius:8px;font-weight:600;font-size:14px;box-shadow:0 4px 14px rgba(73,128,230,0.3);">Rejoindre le RDV</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:10px;">Lien actif 15 min avant l'heure · expire après le RDV</div>
+        </div>
+      </div>
+
+      <p style="margin-top:18px;"><strong>Avant le RDV :</strong></p>
+      <ul style="padding-left:20px;color:var(--muted);font-size:13px;">
+        <li>Préparez les documents listés dans le pré-dossier</li>
+        <li>Vérifiez votre connexion internet (si visio)</li>
+        <li>Vous recevrez un rappel SMS 1h avant</li>
+      </ul>
+
+      <p style="margin-top:18px;color:var(--muted);font-size:13px;">📎 Invitation calendrier (.ics) en pièce jointe — ajoutez à votre Google Agenda / Outlook en un clic.</p>
+
+      <hr style="border:none;border-top:1px solid var(--border);margin:22px 0;">
+
+      <div style="font-size:12px;color:var(--muted);text-align:center;">
+        Besoin d'annuler ou décaler ? <a href="#" style="color:var(--accent);">Cliquez ici</a><br>
+        Notaires.io — Une marque du groupe LegalCorners
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CALENDAR -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h2 id="modal-name">…</h2>
+    <p class="modal-sub" id="modal-sub">…</p>
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-tab="office" onclick="switchTab('office')">🏢 Au cabinet</button>
+      <button class="modal-tab" data-tab="video" onclick="switchTab('video')">🎥 En visio</button>
+    </div>
+    <div id="visio-info" hidden style="background:var(--tint-mint);border:1px solid #99F6E4;border-radius:10px;padding:11px 14px;margin-bottom:14px;font-size:12px;color:#0F766E;display:flex;gap:8px;align-items:flex-start;">
+      <span style="font-size:14px;">✓</span>
+      <div>
+        <strong style="display:block;margin-bottom:2px;">Lien visio auto-généré</strong>
+        <span style="opacity:0.85;">Vous recevrez un lien sécurisé Notaires.io (ou Zoom/Meet selon le choix du notaire) — aucune configuration à faire.</span>
+      </div>
+    </div>
+    <div class="slots" id="slots"></div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal()">Annuler</button>
+      <button class="btn-primary lg" id="confirm-btn" onclick="confirmBooking()" disabled>Confirmer le RDV</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== STATE =====
+  const state = { q1:null, q2:null, postal:null, enrich:{} };
+  let currentNotary = null, selectedSlot = null, currentTab = 'office';
+
+  // ===== ENRICHMENT QUESTIONS PAR BRANCHE =====
+  const ENRICH = {
+    'immo:vente':       [
+      {id:'bien',  l:'Type de bien',         opts:['Appartement','Maison','Terrain','Local commercial']},
+      {id:'prix',  l:'Estimation de prix',   opts:['< 200 k€','200-500 k€','500 k-1 M€','> 1 M€']},
+      {id:'occ',   l:'Le bien est',          opts:['Occupé','Libre','En cours de vente']},
+    ],
+    'immo:achat':       [
+      {id:'bien',  l:'Type de bien',         opts:['Appartement','Maison','Terrain','Local']},
+      {id:'prix',  l:'Prix négocié',         opts:['< 200 k€','200-500 k€','500 k-1 M€','> 1 M€']},
+      {id:'credit',l:'Crédit en cours ?',    opts:['Oui','Non','Pas encore']},
+    ],
+    'immo:transmission':[
+      {id:'bien',  l:'Type de bien',         opts:['Appartement','Maison','Terrain','Local']},
+      {id:'lien',  l:'Bénéficiaire',         opts:['Enfant(s)','Conjoint','Petit-enfant','Autre']},
+      {id:'mode',  l:'Mode envisagé',        opts:['Donation pleine','Démembrement','Je ne sais pas']},
+    ],
+    'immo:litige':      [
+      {id:'type',  l:'Nature du litige',     opts:['Indivision','Conflit héritiers','Voisinage','Autre']},
+      {id:'biens', l:'Combien de biens ?',   opts:['1','2-3','Plus']},
+    ],
+    'famille:deces':    [
+      {id:'lien',  l:'Lien avec le défunt',  opts:['Enfant','Conjoint','Parent','Autre']},
+      {id:'nb',    l:'Nombre d\'héritiers',  opts:['1','2-3','4-5','Plus']},
+      {id:'test',  l:'Testament ?',          opts:['Oui','Non','Je ne sais pas']},
+      {id:'immo',  l:'Bien immo dans la succession ?', opts:['Oui','Non']},
+    ],
+    'famille:mariage':  [
+      {id:'reg',   l:'Régime souhaité',      opts:['Communauté','Séparation','Mixte','Je veux conseil']},
+      {id:'patr',  l:'Patrimoine pré-existant', opts:['Oui (chacun)','Oui (un seul)','Non']},
+      {id:'enf',   l:"Enfants d'union précédente", opts:['Oui','Non']},
+    ],
+    'famille:separation':[
+      {id:'reg',   l:'Régime matrimonial',   opts:['Communauté','Séparation','Autre','Je ne sais pas']},
+      {id:'immo',  l:'Bien immo en commun',  opts:['Oui','Non']},
+      {id:'enf',   l:'Enfants mineurs',      opts:['Oui','Non']},
+    ],
+    'famille:donation': [
+      {id:'stat',  l:'Statut du donateur',   opts:['Marié','Pacsé','Célibataire','Veuf']},
+      {id:'benef', l:'Bénéficiaire',         opts:['Enfant','Conjoint','Petit-enfant','Autre']},
+      {id:'type',  l:'Type de don',          opts:['Liquidités','Bien immo','Titres','Mixte']},
+    ],
+    'societe:creation': [
+      {id:'act',   l:'Type d\'activité',     opts:['Commerciale','Civile','Holding','Immobilier (SCI)']},
+      {id:'nb',    l:"Nombre d'associés",    opts:['1 (seul)','2-3','Plus']},
+      {id:'app',   l:'Apport(s)',            opts:['Cash seulement','Bien immo','Mixte']},
+    ],
+    'societe:cession':  [
+      {id:'forme', l:'Forme de société',     opts:['SAS','SARL','SCI','EI','Autre']},
+      {id:'type',  l:'Type de cession',      opts:['Parts sociales','Fonds de commerce','Totalité','Partielle']},
+      {id:'sal',   l:'Présence salariés',    opts:['Oui','Non']},
+    ],
+    'societe:modification':[
+      {id:'type',  l:'Type de modification', opts:['Dirigeant','Siège social','Capital','Objet social','Autre']},
+      {id:'forme', l:'Forme de société',     opts:['SAS','SARL','SCI','EI','Autre']},
+    ],
+    'societe:dissolution':[
+      {id:'situ',  l:'Situation actuelle',   opts:['Active','En sommeil','Dettes en cours','Autre']},
+      {id:'forme', l:'Forme de société',     opts:['SAS','SARL','SCI','EI','Autre']},
+    ],
+    'document:_':       [
+      {id:'doc',   l:'Type de document',     opts:['Acte sous seing privé','Procuration','Copie conforme','Autre']},
+    ],
+    'idk:_':            [
+      {id:'urg',   l:'Urgence',              opts:['Cette semaine','Ce mois','Pas pressé']},
+    ],
+  };
+
+  // ===== Q2 TREE =====
+  const Q2_TREE = {
+    immo: { title:'Quelle est votre situation ?', sub:'On affine pour vous orienter.', opts:[
+      {id:'vente',ic:'🏷️',l:"Je vends",d:"Mon bien est à la vente"},
+      {id:'achat',ic:'🔑',l:"J'achète",d:"Je signe un compromis"},
+      {id:'transmission',ic:'🎁',l:'Je transmets en famille',d:'Donation, démembrement'},
+      {id:'litige',ic:'⚖️',l:'Je règle un litige',d:'Indivision, conflit'} ]},
+    famille: { title:"Quel est l'événement ?", sub:'Le bon notaire dépend du moment de vie.', opts:[
+      {id:'deces',ic:'🕊️',l:'Un décès dans la famille',d:'Succession à organiser'},
+      {id:'mariage',ic:'💍',l:'Un mariage / PACS à venir',d:'Contrat à préparer'},
+      {id:'separation',ic:'💔',l:'Une séparation',d:'Divorce, dissolution PACS'},
+      {id:'donation',ic:'🎁',l:'Une donation à un proche',d:'Enfant, conjoint, tiers'} ]},
+    societe: { title:"Pour votre entreprise, c'est…", sub:'Chaque étape demande une expertise différente.', opts:[
+      {id:'creation',ic:'🚀',l:'Une création',d:'Société, statuts'},
+      {id:'cession',ic:'🤝',l:'Une cession',d:'Vente de parts, fonds'},
+      {id:'modification',ic:'✏️',l:'Une modification',d:'Statuts, dirigeants'},
+      {id:'dissolution',ic:'📕',l:'Une dissolution',d:"Cessation d'activité"} ]},
+  };
+
+  const SPECIALTY = {
+    immo: { vente:'Vente immobilière', achat:'Acquisition immobilière',
+      transmission:'Transmission immobilière familiale', litige:'Droit immobilier & contentieux'},
+    famille: { deces:'Successions', mariage:'Régimes matrimoniaux',
+      separation:'Divorce & liquidation', donation:'Donations & libéralités'},
+    societe: { creation:'Droit des sociétés — Création', cession:'Cession de parts & fonds',
+      modification:'Modification statutaire', dissolution:'Dissolution & liquidation'},
+    document: { _:'Authentification d\'actes' },
+    idk: { _:'Notaire généraliste' },
+  };
+
+  const ESTIM = {
+    immo: { vente:'1 800 € — 2 600 €', achat:'2 100 € — 3 400 €',
+      transmission:'1 400 € — 2 200 €', litige:'2 500 € — 4 800 €'},
+    famille: { deces:'2 400 € — 3 200 €', mariage:'400 € — 600 €',
+      separation:'1 200 € — 2 400 €', donation:'600 € — 1 200 €'},
+    societe: { creation:'1 800 € — 2 400 €', cession:'1 400 € — 2 800 €',
+      modification:'600 € — 1 200 €', dissolution:'1 600 € — 2 600 €'},
+    document: { _:'80 € — 180 €' },
+    idk: { _:'Sur devis (gratuit)' },
+  };
+
+  const NOTAIRES = [
+    {initials:'AM',color:'',name:'Me Amélie Martin',city:'Paris 8ème',rating:4.9,count:142,next:'Demain 14h30'},
+    {initials:'CD',color:'purple',name:'Me Charles Delaunay',city:'Paris 8ème',rating:4.8,count:98,next:'Demain 16h00'},
+    {initials:'SP',color:'green',name:'Me Sophie Pellerin',city:'Paris 9ème',rating:4.9,count:211,next:'Vendredi 10h00'},
+    {initials:'JB',color:'',name:'Me Jean Beaumont',city:'Paris 17ème',rating:4.7,count:76,next:'Lundi 11h00'},
+  ];
+
+  const SLOTS = ['Demain 09h30','Demain 11h00','Demain 14h30','Demain 16h00',
+    'Vendredi 09h00','Vendredi 10h30','Vendredi 14h00','Lundi 09h30','Lundi 11h00'];
+
+  // ===== NAV =====
+  function goto(n) {
+    document.querySelectorAll('.screen').forEach(s=>s.hidden=true);
+    document.querySelector(`.screen[data-screen="${n}"]`).hidden=false;
+    // Progress dots : 1, 2, 3 = routage. Enrich/4/5 = post-routage (tout vert).
+    const isPostRouting = (n === 'enrich' || n === 4 || n === 5);
+    for (let i=1;i<=3;i++) {
+      const d=document.getElementById(`dot-${i}`);
+      d.classList.remove('active','done');
+      if (isPostRouting) d.classList.add('done');
+      else if (typeof n === 'number' && i<n) d.classList.add('done');
+      else if (i===n) d.classList.add('active');
+    }
+    document.querySelector('.progress').style.visibility = n===5?'hidden':'visible';
+  }
+  function answer(key,value) {
+    state[key]=value;
+    if (key==='q1') {
+      if (value==='document'||value==='idk') { state.q2='_'; goto(3); }
+      else { renderQ2(value); goto(2); }
+    } else if (key==='q2') { goto(3); }
+  }
+  function renderQ2(branch) {
+    const t=Q2_TREE[branch];
+    document.getElementById('q2-title').innerHTML=t.title;
+    document.getElementById('q2-subtitle').textContent=t.sub;
+    document.getElementById('q2-options').innerHTML=t.opts.map(o=>`
+      <button class="option" onclick="answer('q2','${o.id}')">
+        <div class="option-icon">${o.ic}</div>
+        <div class="option-body">
+          <div class="option-label">${o.l}</div>
+          <div class="option-desc">${o.d}</div>
+        </div>
+        <span class="option-arrow">→</span>
+      </button>`).join('');
+  }
+  function submitPostal(e) {
+    e.preventDefault();
+    state.postal=document.getElementById('postal-input').value;
+    // Try to go to enrichment step
+    const key = `${state.q1}:${state.q2}`;
+    if (ENRICH[key] && ENRICH[key].length) {
+      renderEnrich(key);
+      goto('enrich');
+    } else {
+      renderResult();
+      goto(4);
+    }
+  }
+
+  function renderEnrich(key) {
+    state.enrich = {};
+    const qs = ENRICH[key];
+    const container = document.getElementById('enrich-questions');
+    container.innerHTML = qs.map((q,i) => `
+      <div class="enrich-q" data-q="${q.id}">
+        <div class="enrich-q-label">${i+1}. ${q.l}</div>
+        <div class="enrich-choices">
+          ${q.opts.map(o => `<button type="button" class="enrich-choice" onclick="selectEnrich('${q.id}', this, '${o.replace(/'/g, "\\'")}')">${o}</button>`).join('')}
+        </div>
+      </div>
+    `).join('');
+    document.getElementById('enrich-submit').disabled = true;
+  }
+
+  function selectEnrich(qid, btn, val) {
+    state.enrich[qid] = val;
+    btn.parentElement.querySelectorAll('.enrich-choice').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    // Enable submit when at least 1 answer given (more friendly than forcing all)
+    document.getElementById('enrich-submit').disabled = Object.keys(state.enrich).length === 0;
+  }
+
+  function submitEnrich() {
+    renderResult();
+    goto(4);
+  }
+  function skipEnrich() {
+    state.enrich = {};
+    renderResult();
+    goto(4);
+  }
+  function renderResult() {
+    const spec=SPECIALTY[state.q1][state.q2]||SPECIALTY[state.q1]._;
+    const estim=ESTIM[state.q1][state.q2]||ESTIM[state.q1]._;
+    const enriched = Object.keys(state.enrich || {}).length > 0;
+    document.getElementById('specialty-name').textContent=spec;
+    document.getElementById('result-meta').innerHTML =
+      `4 notaires disponibles près du ${state.postal}` +
+      (enriched ? ` <span class="enrich-tag">📋 Pré-dossier prêt</span>` : '');
+    document.getElementById('estim-value').textContent=estim;
+    document.getElementById('notary-list').innerHTML=NOTAIRES.map((n,i)=>`
+      <div class="notary">
+        <div class="avatar ${n.color}">${n.initials}</div>
+        <div class="notary-info">
+          <div class="notary-name">${n.name}</div>
+          <div class="notary-meta"><span>${n.city}</span><span class="rating">★ ${n.rating}</span><span>${n.count} avis</span></div>
+          <div class="availability">⏱ ${n.next}</div>
+        </div>
+        <button class="book-btn" onclick="openModal(${i})">Réserver</button>
+      </div>`).join('');
+  }
+  function openModal(i) {
+    currentNotary=NOTAIRES[i]; selectedSlot=null; currentTab='office';
+    document.getElementById('modal-name').textContent=currentNotary.name;
+    document.getElementById('modal-sub').textContent=`${currentNotary.city} · Choisissez votre créneau`;
+    document.querySelectorAll('.modal-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab==='office'));
+    document.getElementById('confirm-btn').disabled=true;
+    document.getElementById('slots').innerHTML=SLOTS.map((s,idx)=>`
+      <button class="slot" data-idx="${idx}" onclick="selectSlot(${idx})">${s}</button>`).join('');
+    document.getElementById('modal').classList.add('open');
+  }
+  function switchTab(tab) {
+    currentTab=tab;
+    document.querySelectorAll('.modal-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+    document.getElementById('visio-info').hidden = (tab !== 'video');
+  }
+  function closeModal() { document.getElementById('modal').classList.remove('open'); }
+  function selectSlot(idx) {
+    selectedSlot=SLOTS[idx];
+    document.querySelectorAll('.slot').forEach(s=>s.classList.remove('selected'));
+    document.querySelector(`.slot[data-idx="${idx}"]`).classList.add('selected');
+    document.getElementById('confirm-btn').disabled=false;
+  }
+  function confirmBooking() {
+    closeModal();
+    const isVisio = currentTab === 'video';
+    const mode = isVisio ? '🎥 Visio' : '🏢 Cabinet';
+    const linkBlock = isVisio
+      ? `<div style="background:var(--tint-blue);border:1px solid #BFD9FF;border-radius:10px;padding:12px 14px;margin-top:14px;font-size:13px;text-align:left;">
+           <div style="font-weight:600;color:var(--primary);margin-bottom:4px;">🔗 Votre lien visio</div>
+           <div style="font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--accent);word-break:break-all;">meet.notaires.io/rdv/${Math.random().toString(36).slice(2,10)}</div>
+           <div style="font-size:11px;color:var(--muted);margin-top:6px;">Lien sécurisé · expire 30 min après le RDV · pas d'app à installer</div>
+         </div>`
+      : '';
+    document.getElementById('confirm-details').innerHTML=
+      `<strong>${currentNotary.name}</strong> · ${selectedSlot} · ${mode}${linkBlock}`;
+    goto(5);
+    document.querySelector('.wizard-card').scrollIntoView({behavior:'smooth', block:'center'});
+  }
+  function resetAll() {
+    state.q1=null; state.q2=null; state.postal=null; state.enrich={};
+    document.getElementById('postal-input').value='';
+    goto(1);
+  }
+
+  // ============= TOUR GUIDÉE =============
+  const SIDE = `
+    <div class="mock-side">
+      <div class="mock-logo">Notaires<span>.io</span></div>
+      <div class="mock-nav-item active">📊 Tableau de bord</div>
+      <div class="mock-nav-item">📅 Mes RDV</div>
+      <div class="mock-nav-item">📋 Pré-dossiers</div>
+      <div class="mock-nav-item">🎥 Visio</div>
+      <div class="mock-nav-item">⭐ Avis</div>
+      <div class="mock-nav-item">⚙️ Réglages</div>
+    </div>`;
+  const TOPBAR = (h1) => `
+    <div class="mock-topbar">
+      <div class="mock-h1">${h1}</div>
+      <div class="mock-user"><div class="av">SP</div>Me Sophie Pellerin</div>
+    </div>`;
+
+  const SLIDES = [
+    {
+      eyebrow: 'Étape 1',
+      title: 'Tout votre cabinet, <em>en un coup d\'œil</em>',
+      text: 'Le tableau de bord centralise vos RDV du jour, les pré-dossiers reçus, et vos KPIs.',
+      bullets: ['RDV à venir', 'Pré-dossiers en attente', 'Stats du mois', 'Notifications'],
+      mock: `<div class="mock-dash">${SIDE}<div class="mock-main">
+        ${TOPBAR('Bonjour Maître, <em>3 RDV aujourd\'hui</em>')}
+        <div class="mock-kpis">
+          <div class="mock-kpi"><div class="mock-kpi-lbl">RDV aujourd'hui</div><div class="mock-kpi-val">3</div><div class="mock-kpi-delta">+1 vs hier</div></div>
+          <div class="mock-kpi"><div class="mock-kpi-lbl">Pré-dossiers</div><div class="mock-kpi-val">2</div><div class="mock-kpi-delta">À examiner</div></div>
+          <div class="mock-kpi"><div class="mock-kpi-lbl">RDV / mois</div><div class="mock-kpi-val">47</div><div class="mock-kpi-delta">+18 %</div></div>
+          <div class="mock-kpi"><div class="mock-kpi-lbl">Note moyenne</div><div class="mock-kpi-val">4,9★</div><div class="mock-kpi-delta">142 avis</div></div>
+        </div>
+        <div class="mock-section-h">Aujourd'hui</div>
+        <div class="mock-rdv-row">
+          <div class="mock-rdv-time">14h30</div>
+          <div><div class="mock-rdv-name">M. Dupont</div><div class="mock-rdv-meta">Succession · pré-dossier reçu</div></div>
+          <span class="mock-rdv-tag visio">🎥 Visio</span>
+        </div>
+        <div class="mock-rdv-row">
+          <div class="mock-rdv-time">16h00</div>
+          <div><div class="mock-rdv-name">Mme Lefèvre</div><div class="mock-rdv-meta">Donation enfant</div></div>
+          <span class="mock-rdv-tag">🏢 Cabinet</span>
+        </div>
+      </div></div>`
+    },
+    {
+      eyebrow: 'Étape 2',
+      title: 'Le <em>pré-dossier IA</em> qui change tout',
+      text: 'Avant chaque RDV, vous recevez un brief structuré généré à partir des réponses du client. Vous arrivez préparé.',
+      bullets: ['Type de dossier identifié', 'Faits clés collectés', 'Documents à demander', 'Estimation honoraires'],
+      mock: `<div class="mock-dash">${SIDE}<div class="mock-main">
+        ${TOPBAR('Pré-dossier · <em>M. Dupont</em>')}
+        <div style="background:white;border:1px solid var(--border-soft);border-radius:12px;padding:20px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:12px;align-items:center;">
+            <span style="background:var(--tint-purple);color:#7E22CE;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;">📋 SUCCESSION</span>
+            <span style="font-size:11px;color:var(--muted);">Reçu il y a 23h · RDV demain 14h30</span>
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--text-strong);margin-bottom:14px;">M. Dupont — Succession Paris 8ème</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;font-size:12px;">
+            <div><span style="color:var(--muted);">Type</span><br><strong style="color:var(--text-strong);">Avec testament</strong></div>
+            <div><span style="color:var(--muted);">Héritiers</span><br><strong style="color:var(--text-strong);">3 (2 enfants + conjoint)</strong></div>
+            <div><span style="color:var(--muted);">Biens</span><br><strong style="color:var(--text-strong);">1 appartement + comptes</strong></div>
+            <div><span style="color:var(--muted);">Donations antérieures</span><br><strong style="color:var(--text-strong);">Oui (2019)</strong></div>
+            <div><span style="color:var(--muted);">Conflit héritiers</span><br><strong style="color:var(--text-strong);">Aucun</strong></div>
+            <div><span style="color:var(--muted);">Estim. honoraires</span><br><strong style="color:var(--accent);">2 400 € — 3 200 €</strong></div>
+          </div>
+          <div style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border-soft);font-size:11px;color:var(--muted);">🤖 Généré par IA Notaires.io · validé par le client</div>
+        </div>
+      </div></div>`
+    },
+    {
+      eyebrow: 'Étape 3',
+      title: 'Démarrer la visio en <em>un seul clic</em>',
+      text: 'À l\'heure du RDV, un bouton "Démarrer" apparaît. Le client clique sur son lien, vous cliquez ici, vous êtes ensemble.',
+      bullets: ['Pas d\'app à installer pour le client', 'Lien sécurisé Notaires.io (ou Zoom/Meet du notaire)', 'Salle prête 15 min avant', 'Recording optionnel'],
+      mock: `<div class="mock-dash">${SIDE}<div class="mock-main" style="position:relative;">
+        ${TOPBAR('Mes RDV')}
+        <div style="background:linear-gradient(135deg, #1C4587 0%, #4980E6 100%);color:white;padding:24px;border-radius:14px;margin-bottom:18px;box-shadow:0 8px 30px rgba(28,69,135,0.2);">
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:1.5px;opacity:0.85;font-weight:600;margin-bottom:8px;">🎥 Prochain RDV · dans 5 min</div>
+          <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:6px;">M. Dupont — Succession</div>
+          <div style="font-size:13px;opacity:0.9;margin-bottom:18px;">14h30 — 15h15 · Pré-dossier consulté ✓</div>
+          <button style="background:white;color:var(--primary);border:none;padding:11px 22px;border-radius:9px;font-weight:700;font-size:14px;cursor:pointer;">▶️ Démarrer la visio</button>
+        </div>
+        <div class="mock-section-h">Plus tard aujourd'hui</div>
+        <div class="mock-rdv-row">
+          <div class="mock-rdv-time">16h00</div>
+          <div><div class="mock-rdv-name">Mme Lefèvre</div><div class="mock-rdv-meta">Donation enfant</div></div>
+          <span class="mock-rdv-tag">🏢 Cabinet</span>
+        </div>
+      </div></div>`
+    },
+    {
+      eyebrow: 'Étape 4',
+      title: 'Votre <em>agenda synchronisé</em>',
+      text: 'Connectez Google Calendar ou Outlook une fois. Vos créneaux remontent automatiquement.',
+      bullets: ['Google Calendar', 'Outlook 365', 'Apple Calendar (iCloud)', 'Vous bloquez/libérez quand vous voulez'],
+      mock: `<div class="mock-dash">${SIDE}<div class="mock-main">
+        ${TOPBAR('Réglages · <em>Synchronisation</em>')}
+        <div style="background:white;border:1px solid var(--border-soft);border-radius:12px;padding:20px;margin-bottom:14px;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:46px;height:46px;background:white;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;">📅</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;color:var(--text-strong);font-size:14px;">Google Calendar</div>
+              <div style="font-size:12px;color:var(--success);">✓ Connecté · sophie.pellerin@etude.fr</div>
+            </div>
+            <span style="background:var(--tint-green);color:#0F766E;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:700;">SYNC OK</span>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid var(--border-soft);border-radius:12px;padding:20px;margin-bottom:14px;">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:46px;height:46px;background:white;border:1px solid var(--border);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;">🗓️</div>
+            <div style="flex:1;">
+              <div style="font-weight:600;color:var(--text-strong);font-size:14px;">Outlook 365</div>
+              <div style="font-size:12px;color:var(--muted);">Non connecté</div>
+            </div>
+            <button style="background:var(--accent-soft);color:var(--primary);border:1px solid var(--accent);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;">Connecter</button>
+          </div>
+        </div>
+        <div style="background:var(--tint-blue);border-radius:10px;padding:14px;font-size:12px;color:var(--primary);">
+          💡 Les RDV pris sur Notaires.io apparaissent automatiquement dans votre calendrier, et vos blocages personnels (déjeuner, formation) bloquent les créneaux côté plateforme.
+        </div>
+      </div></div>`
+    },
+    {
+      eyebrow: 'Étape 5',
+      title: '<em>Vos honoraires</em>, sous votre contrôle',
+      text: 'Définissez vos émoluments par type de dossier. Notaires.io affiche l\'estimation au client AVANT le RDV — fini les surprises.',
+      bullets: ['Tarifs personnalisables', 'Modulation selon complexité', 'Transparence client', 'Émoluments réglementés respectés'],
+      mock: `<div class="mock-dash">${SIDE}<div class="mock-main">
+        ${TOPBAR('Réglages · <em>Mes honoraires</em>')}
+        <div style="background:white;border:1px solid var(--border-soft);border-radius:12px;padding:20px;">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:14px;">Spécialités & estimations affichées au client</div>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg-soft);border-radius:8px;">
+              <div><div style="font-size:13px;font-weight:600;color:var(--text-strong);">Successions</div><div style="font-size:11px;color:var(--muted);">Estimation auto par complexité</div></div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;color:var(--accent);font-size:14px;">1 800 – 3 500 €</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg-soft);border-radius:8px;">
+              <div><div style="font-size:13px;font-weight:600;color:var(--text-strong);">Vente immobilière</div><div style="font-size:11px;color:var(--muted);">% du prix de vente</div></div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;color:var(--accent);font-size:14px;">1,5 – 2,2 %</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--bg-soft);border-radius:8px;">
+              <div><div style="font-size:13px;font-weight:600;color:var(--text-strong);">Donation</div><div style="font-size:11px;color:var(--muted);">Tarif réglementé</div></div>
+              <div style="font-family:'Playfair Display',serif;font-weight:700;color:var(--accent);font-size:14px;">600 – 1 200 €</div>
+            </div>
+            <button style="margin-top:6px;background:white;border:1.5px dashed var(--border);color:var(--muted);padding:10px;border-radius:8px;font-size:12px;font-weight:500;">+ Ajouter une spécialité</button>
+          </div>
+        </div>
+      </div></div>`
+    },
+    {
+      eyebrow: 'Étape 6',
+      title: 'Vos <em>avis clients</em>, votre croissance',
+      text: 'Chaque RDV terminé déclenche une demande d\'avis. Modérés par Notaires.io, ils alimentent votre fiche publique et améliorent votre référencement.',
+      bullets: ['Avis vérifiés (RDV abouti requis)', 'Modération par Notaires.io', 'Réponse possible aux avis', 'Affichage SEO sur votre fiche'],
+      mock: `<div class="mock-dash">${SIDE}<div class="mock-main">
+        ${TOPBAR('Mes avis · <em>4,9★ (142)</em>')}
+        <div style="display:flex;gap:10px;margin-bottom:16px;">
+          <div style="background:white;border:1px solid var(--border-soft);border-radius:10px;padding:14px;flex:1;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);">4,9</div>
+            <div style="font-size:11px;color:var(--muted);">★★★★★ · 142 avis</div>
+          </div>
+          <div style="background:white;border:1px solid var(--border-soft);border-radius:10px;padding:14px;flex:1;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--success);">98%</div>
+            <div style="font-size:11px;color:var(--muted);">Recommandent</div>
+          </div>
+          <div style="background:white;border:1px solid var(--border-soft);border-radius:10px;padding:14px;flex:1;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--primary);">87%</div>
+            <div style="font-size:11px;color:var(--muted);">Avis détaillés</div>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid var(--border-soft);border-radius:10px;padding:14px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;align-items:center;">
+            <div style="font-weight:600;font-size:13px;color:var(--text-strong);">Claire D. · Succession</div>
+            <div style="color:#FCD34D;font-size:13px;">★★★★★</div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);font-style:italic;line-height:1.5;">"Maître Pellerin a été d'une grande bienveillance. Le pré-dossier avait été lu, on a gagné un temps fou. Je recommande sans hésiter."</div>
+          <div style="margin-top:10px;font-size:11px;"><a href="#" style="color:var(--accent);font-weight:600;">↩ Répondre à cet avis</a></div>
+        </div>
+      </div></div>`
+    },
+  ];
+
+  let tourIndex = 0;
+  function openTour() {
+    tourIndex = 0;
+    document.getElementById('tour').classList.add('open');
+    renderTour();
+  }
+  function closeTour() {
+    document.getElementById('tour').classList.remove('open');
+  }
+  function renderTour() {
+    const s = SLIDES[tourIndex];
+    document.getElementById('tour-counter').textContent = `${tourIndex+1} / ${SLIDES.length}`;
+    document.getElementById('tour-mock').innerHTML = s.mock;
+    document.getElementById('tour-text').innerHTML = `
+      <div class="tour-eyebrow">${s.eyebrow}</div>
+      <h2>${s.title}</h2>
+      <p>${s.text}</p>
+      <ul class="tour-bullets">${s.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
+    `;
+    document.getElementById('tour-dots').innerHTML = SLIDES.map((_,i)=>`<div class="tour-dot ${i===tourIndex?'active':''}" onclick="gotoSlide(${i})"></div>`).join('');
+    document.getElementById('tour-next').textContent = tourIndex === SLIDES.length-1 ? 'Terminer ✓' : 'Suivant →';
+  }
+  function nextSlide() {
+    if (tourIndex < SLIDES.length-1) { tourIndex++; renderTour(); }
+    else closeTour();
+  }
+  function prevSlide() {
+    if (tourIndex > 0) { tourIndex--; renderTour(); }
+  }
+  function gotoSlide(i) {
+    tourIndex = i; renderTour();
+  }
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('tour').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') nextSlide();
+    else if (e.key === 'ArrowLeft') prevSlide();
+    else if (e.key === 'Escape') closeTour();
+  });
+
+  function openEmailPreview() {
+    // Hydrate the email modal from current booking state
+    const isVisio = currentTab === 'video';
+    document.getElementById('email-subj-name').textContent = currentNotary?.name || 'votre notaire';
+    document.getElementById('email-date').textContent = selectedSlot || 'à confirmer';
+    document.getElementById('email-notary').textContent = `${currentNotary?.name || ''} · ${currentNotary?.city || ''}`;
+    document.getElementById('email-mode').textContent = isVisio ? '🎥 Visio' : '🏢 Au cabinet de Me ' + (currentNotary?.name?.replace('Me ','') || '');
+    const linkBlock = document.getElementById('email-link-block');
+    linkBlock.hidden = !isVisio;
+    if (isVisio) {
+      document.getElementById('email-link').textContent =
+        `meet.notaires.io/rdv/${Math.random().toString(36).slice(2,10)}`;
+    }
+    document.getElementById('email-modal').classList.add('open');
+  }
+  function closeEmailPreview() {
+    document.getElementById('email-modal').classList.remove('open');
+  }
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+
+  goto(1);
+</script>
+
+</body>
+</html>
